@@ -21,10 +21,16 @@ jobs:
           pip install buildozer cython
           pip install -r requirements_mobile.txt
 
-      - name: Install Android SDK/NDK
+      - name: Install Android build tools
         run: |
           sudo apt-get install -y openjdk-11-jdk-headless
 
       - name: Build APK
         run: |
           buildozer -v android debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-apk
+          path: bin/*.apk
