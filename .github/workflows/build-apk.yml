@@ -8,10 +8,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@a5ac7e51b41094c7d5ecf0b7496753388f3a404d
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@61a6322f88396a6271a6ee3cb4d475c50ffe856a
         with:
           python-version: '3.10'
 
@@ -25,7 +25,7 @@ jobs:
           buildozer -v android debug
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@83fd05a356d7e2593de2260e8fb91e4e8faa46ed
         with:
           name: android-apk
           path: bin/*.apk
