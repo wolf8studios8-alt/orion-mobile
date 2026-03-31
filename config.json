@@ -1,0 +1,9 @@
+﻿{
+  "ai_name": "ORION",
+  "llm_model": "llama-3.1-8b-instant",
+  "stt_model": "whisper-large-v3-turbo",
+  "voice_id": "pFZP5JQG7iQjIQuC4Bku",
+  "mic_threshold": 150,
+  "language": "es",
+  "max_history_messages": 20
+}
