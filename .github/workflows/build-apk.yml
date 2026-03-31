@@ -25,22 +25,6 @@ jobs:
         run: |
           sudo apt-get install -y openjdk-11-jdk-headless libtool autoconf
 
-      - name: Cache Buildozer
-        uses: actions/cache@v3
-        with:
-          path: ~/.buildozer
-          key: buildozer-${{ runner.os }}-${{ hashFiles('buildozer.spec') }}
-          restore-keys: |
-            buildozer-${{ runner.os }}-
-
-      - name: Cache Android SDK/NDK
-        uses: actions/cache@v3
-        with:
-          path: ~/.buildozer/android/platform
-          key: android-platform-${{ runner.os }}-${{ hashFiles('buildozer.spec') }}
-          restore-keys: |
-            android-platform-${{ runner.os }}-
-
       - name: Build APK
         run: |
           buildozer -v android debug
