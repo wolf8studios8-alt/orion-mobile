@@ -7,25 +7,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@a5ac7e51b41094c7d5ecf0b7496753388f3a404d
+      - name: Checkout code
+        run: |
+          git clone https://github.com/wolf8studios8-alt/orion-mobile.git .
 
       - name: Set up Python
-        uses: actions/setup-python@61a6322f88396a6271a6ee3cb4d475c50ffe856a
-        with:
-          python-version: '3.10'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip
 
-      - name: Install Buildozer
+      - name: Install dependencies
         run: |
           pip install buildozer cython
           pip install -r requirements_mobile.txt
 
-      - name: Build APK with Buildozer
+      - name: Install Android SDK/NDK
+        run: |
+          sudo apt-get install -y openjdk-11-jdk-headless
+
+      - name: Build APK
         run: |
           buildozer -v android debug
-
-      - name: Upload APK
-        uses: actions/upload-artifact@83fd05a356d7e2593de2260e8fb91e4e8faa46ed
-        with:
-          name: android-apk
-          path: bin/*.apk
